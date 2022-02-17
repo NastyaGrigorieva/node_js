@@ -42,12 +42,12 @@ createFiles('inPerson', inPersonUsers);
 
 
 const foo = async (from, to) => {
-    const pathToDir = path.join(__dirname, 'main', from);
-    const arrFileNames = await fs.readdir(pathToDir);
+    const dirName = path.join(__dirname, 'main', from);
+    const movieFile = await fs.readdir(dirName);
 
-    arrFileNames.map(filesNew => {
+    movieFile.map(filesNew => {
         if (!filesNew.includes('new_')) {
-            fs.rename(path.join(pathToDir, filesNew), path.join(__dirname, 'main', to, `new_${filesNew}`));
+            fs.rename(path.join(dirName, filesNew), path.join(__dirname, 'main', to, `new_${filesNew}`));
         }
     });
 }
